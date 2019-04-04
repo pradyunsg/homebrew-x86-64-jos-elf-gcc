@@ -5,8 +5,8 @@ class X8664JosElfGdb < Formula
 
   def install
     system "./configure", "--prefix=#{prefix}",
-                          "--target=x86-64-jos-elf",
-                          "--program-prefix=x86-64-jos-elf-",
+                          "--target=x86_64-jos-elf",
+                          "--program-prefix=x86_64-jos-elf-",
                           "--disable-nls",
                           "--disable-werror"
     system "make", "all"
@@ -19,6 +19,6 @@ class X8664JosElfGdb < Formula
   end
 
   test do
-    system "#{bin}/x86-64-jos-elf-gdb -v"
+    system "#{bin}/x86_64-jos-elf-gdb -v"
   end
 end
