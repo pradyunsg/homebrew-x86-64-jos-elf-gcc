@@ -13,14 +13,15 @@ class X8664JosElfGcc < Formula
   def install
     mkdir 'build' do
       system "../configure", "--prefix=#{prefix}",
-                             "--target=x86_64-jos-elf",
+                             "--target=x86_64-elf",
+                             "--program-prefix=x86-64-jos-elf-",
                              "--disable-werror",
                              "--disable-libssp",
                              "--disable-libmudflap",
                              "--disable-nls",
                              "--with-newlib",
-                             "--with-as=#{Formula["x86-64-jos-elf-binutils"].opt_prefix}/bin/x86_64-jos-elf-as",
-                             "--with-ld=#{Formula["x86-64-jos-elf-binutils"].opt_prefix}/bin/x86_64-jos-elf-ld",
+                             "--with-as=#{Formula["x86-64-jos-elf-binutils"].opt_prefix}/bin/x86-64-jos-elf-as",
+                             "--with-ld=#{Formula["x86-64-jos-elf-binutils"].opt_prefix}/bin/x86-64-jos-elf-ld",
                              "--without-headers",
                              "--enable-languages=c"
       system "make", "all-gcc"
@@ -31,7 +32,7 @@ class X8664JosElfGcc < Formula
   end
 
   test do
-    system "#{bin}/x86_64-jos-elf-gcc -v"
+    system "#{bin}/x86-64-jos-elf-gcc -v"
   end
 end
 
