@@ -5,19 +5,19 @@ class I386JosElfBinutils < Formula
 
   def install
     system "./configure", "--prefix=#{prefix}",
-                          "--target=i386-jos-elf",
+                          "--target=x86-64-jos-elf",
                           "--disable-werror",
                           "--disable-nls"
     system "make"
     system "make", "install"
     # avoid conflict with gdb
-    if Formula["i386-jos-elf-gdb"].installed?
+    if Formula["x86-64-jos-elf-gdb"].installed?
       rm_r share/"info"
       rm_r lib
     end
   end
 
   test do
-    system "#{bin}/i386-jos-elf-objdump -i"
+    system "#{bin}/x86-64-jos-elf-objdump -i"
   end
 end
