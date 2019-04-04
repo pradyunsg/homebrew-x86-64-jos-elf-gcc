@@ -1,4 +1,4 @@
-class I386JosElfGcc < Formula
+class X8664JosElfGcc < Formula
   homepage "http://pdos.csail.mit.edu/6.828/2014/tools.html"
   url "http://ftpmirror.gnu.org/gcc/gcc-4.6.1/gcc-core-4.6.1.tar.bz2"
   sha256 "0bbb8f754a31f29013f6e9ad4c755d92bb0f154a665c4b623e86ae7174d98e33"
@@ -6,21 +6,21 @@ class I386JosElfGcc < Formula
   depends_on 'gmp'
   depends_on 'libmpc'
   depends_on 'mpfr'
-  depends_on 'i386-jos-elf-binutils'
+  depends_on 'x86-64-jos-elf-binutils'
 
   patch :DATA
 
   def install
     mkdir 'build' do
       system "../configure", "--prefix=#{prefix}",
-                             "--target=i386-jos-elf",
+                             "--target=x86-64-jos-elf",
                              "--disable-werror",
                              "--disable-libssp",
                              "--disable-libmudflap",
                              "--disable-nls",
                              "--with-newlib",
-                             "--with-as=#{Formula["i386-jos-elf-binutils"].opt_prefix}/bin/i386-jos-elf-as",
-                             "--with-ld=#{Formula["i386-jos-elf-binutils"].opt_prefix}/bin/i386-jos-elf-ld",
+                             "--with-as=#{Formula["x86-64-jos-elf-binutils"].opt_prefix}/bin/x86-64-jos-elf-as",
+                             "--with-ld=#{Formula["x86-64-jos-elf-binutils"].opt_prefix}/bin/x86-64-jos-elf-ld",
                              "--without-headers",
                              "--enable-languages=c"
       system "make", "all-gcc"
@@ -31,7 +31,7 @@ class I386JosElfGcc < Formula
   end
 
   test do
-    system "#{bin}/i386-jos-elf-gcc -v"
+    system "#{bin}/x86-64-jos-elf-gcc -v"
   end
 end
 
