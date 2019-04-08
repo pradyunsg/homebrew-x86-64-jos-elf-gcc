@@ -6,7 +6,7 @@ class X8664JosElfBinutils < Formula
   def install
     system "./configure", "--prefix=#{prefix}",
                           "--target=x86_64-elf",
-                          "--program-prefix=x86-64-jos-elf-",
+                          "--program-prefix=x86_64-elf-",
                           "--disable-werror",
                           "--disable-nls"
     system "make"

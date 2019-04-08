@@ -14,7 +14,7 @@ class X8664JosElfGcc < Formula
     mkdir 'build' do
       system "../configure", "--prefix=#{prefix}",
                              "--target=x86_64-elf",
-                             "--program-prefix=x86-64-jos-elf-",
+                             "--program-prefix=x86_64-elf-",
                              "--disable-werror",
                              "--disable-libssp",
                              "--disable-libmudflap",
@@ -53,6 +53,6 @@ index abf17f8..550d3bb 100644
    if (v && type == v->type)
      {
 -      struct pair newv;
- 
+
        newv = *v;
        newv.type = field_type;
